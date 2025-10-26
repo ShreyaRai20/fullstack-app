@@ -7,7 +7,7 @@ export interface IUser {
     _id?: mongoose.Types.ObjectId;
     createdAt?: Date;
     updatedAt?: Date;
-}
+};
 
 const userSchema = new Schema<IUser>(
     {
@@ -28,4 +28,13 @@ const userSchema = new Schema<IUser>(
     }
 )
 
-export const User = model('User', userSchema)
+userSchema.pre('save',async function(next) {
+    if(this.isModified("password")){
+       this.password = await bcrypt.hash(this.password, 10)
+    }
+    next()
+});
+
+const User = models?.User || model<IUser>('User', userSchema);
+
+export default User;
