@@ -13,7 +13,7 @@ function LoginPage() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        if(password){
+        if(!password){
             alert("password required")
             return
         }
