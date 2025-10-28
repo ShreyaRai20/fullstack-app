@@ -1,5 +1,5 @@
 import { authOptions } from "@/lib/auth";
-import connectToDB from "@/lib/db";
+import { connectToDB } from "@/lib/db";
 import Video, { IVideo } from "@/models/Video";
 import { request } from "http";
 import { getServerSession } from "next-auth";

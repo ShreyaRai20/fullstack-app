@@ -37,7 +37,7 @@ function RegisterPage() {
             if(!res.ok){
                 throw new Error(data.error || "Registeration failed")
             }
-            console.log('ee')
+
             router.push('/login')
         } catch (error) {
             alert(error)
