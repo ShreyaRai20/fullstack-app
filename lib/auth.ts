@@ -13,7 +13,7 @@ export const authOptions:NextAuthOptions = {
                 password:{label: "Password", type:"password"},
             },
             async authorize(credentials) {
-                if(credentials?.email || !credentials?.password){
+                if(!credentials?.email || !credentials?.password){
                     throw new Error("missing email or password")
                 }
                 try {
@@ -56,10 +56,6 @@ export const authOptions:NextAuthOptions = {
             }
             return session
         }
-    },
-    pages:{
-        signIn:"/login",
-        error:"/login"
     },
     session:{
         strategy:"jwt",
